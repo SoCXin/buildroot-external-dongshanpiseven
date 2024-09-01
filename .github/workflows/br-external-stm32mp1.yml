@@ -2,21 +2,23 @@ name: Auto Build DSP7 system.
 
 on:
   push:
-    tags:
-       - '*'
+    branches:
+      - main
+    paths:
+      - 'configs/**'
        
 jobs:
   build-all:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         config: [dongshanpiseven_core_defconfig, dongshanpiseven_standard-lvgl_defconfig, dongshanpiseven_standard-aiot_defconfig, dongshanpiseven_full-qt_defconfig ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: buildroot-external-dongshanpiseven
       
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: DongshanPI/Buildroot-ST
           ref: master
