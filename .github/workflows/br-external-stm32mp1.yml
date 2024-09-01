@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'configs/**'
        
 jobs:
   build-all:
@@ -20,8 +18,8 @@ jobs:
       
       - uses: actions/checkout@v4
         with:
-          repository: DongshanPI/Buildroot-ST
-          ref: master
+          repository: SoCXin/buildroot
+          ref: st/2021.02
           path: buildroot
           
       - name: Install buildroot dependencies
